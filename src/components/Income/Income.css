@@ -1,0 +1,37 @@
+.income-container{
+  height: 500px;
+  /* width: 800px; */
+  /* border: 2px solid black; */
+  display: flex;
+  align-items:center;
+  justify-content: flex-start;
+  flex-direction: column;
+  box-shadow: 2px 2px 20px 3px rgba(0,0,0,0.2);
+  border-radius: 15px;
+  padding: 10px;
+}
+
+.income-card-container{
+    display: flex;
+    justify-content: space-around;
+    align-items: start;
+    gap: 30px;
+}
+
+.income-card{
+    height: 200px;
+    width: 220px;
+    background-color: rgb(19, 255, 192);
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+    overflow: scroll;
+
+}
+
+.data-flow{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
