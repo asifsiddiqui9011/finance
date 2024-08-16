@@ -1,20 +1,11 @@
 import { createContext, useEffect } from "react";
 import { useState } from "react";
-import Expense from "../components/Expenses/Expense";
-// import { getAllExpenses } from "../../../server/controller/expenseController";
 
 
 export const FinanceContext = createContext(null);
 
 
 
-// const getDefaultWishList = ()=> {
-//     let wishList = {};
-//     for (let index = 0; index < 300+1; index++) {
-//         wishList[index] = 0;
-//     }
-//     return wishList;
-// }
 
  
 const FinanceContextProvider = (props) => {
@@ -27,9 +18,7 @@ const FinanceContextProvider = (props) => {
 
     useEffect(()=>{
 
-        // fetch('http://localhost:3000/api/allexpense')
-        // .then((response)=>response.json())
-        // .then((data)=>setAllExpense(data));
+    
 
         if(localStorage.getItem('auth-token')){
             fetch('http://localhost:3000/api/allexpense',{
