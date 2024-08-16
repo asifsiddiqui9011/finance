@@ -26,7 +26,7 @@ button{
 }
 
 button:focus:active{
-    background-color: rgba(234, 131, 253, 0.744);
+    background-color: rgba(43, 142, 255, 0.744);
 }
 
 .display-container{

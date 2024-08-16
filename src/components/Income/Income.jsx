@@ -46,6 +46,7 @@ const Income = () => {
 var total = getTotalIncomeAmount()
 
   return (
+    <div className="income-cards-container">
     <div className="income-container">
         <span>
           <h1>Income Details</h1>
@@ -139,7 +140,9 @@ var total = getTotalIncomeAmount()
         </form>
       </div>
       </div>
-      <IncomeGraph/>
+     
+    </div>
+     <IncomeGraph/>
     </div>
   )
 }
