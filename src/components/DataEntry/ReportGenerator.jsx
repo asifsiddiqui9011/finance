@@ -1,5 +1,4 @@
 import "./ReportGenerator.css"
-import Graph from "../Graph";
 
 // import {CanvasJSChart} from "../Graph"
 import {

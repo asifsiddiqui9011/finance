@@ -1,5 +1,6 @@
 import { useState } from "react"
 import "./Login.css"
+import loginImg from "../../assets/login.jpg"
 
 const Login = (props) => {
 
@@ -44,7 +45,7 @@ const Login = (props) => {
     <div className="login-container">
      
       <div className="login-img-container">
-          <img src="" alt="" />
+          <img src={loginImg} alt="" className="login-img" />
       </div>
       <div className="login-form-container">
         <h2>Login  <hr /></h2>

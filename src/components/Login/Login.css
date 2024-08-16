@@ -14,8 +14,14 @@
  .login-img-container{
     height: 400px;
     width: 370px;
-    background-color: aquamarine;
+    
  }
+ .login-img{
+   height: 400px;
+    width: 370px;
+    border-radius:15px 0px 0px 15px; 
+ }
+
 
  .login-form-container{
     height: 400px;
