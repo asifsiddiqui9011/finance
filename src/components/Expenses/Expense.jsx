@@ -1,9 +1,7 @@
 import { FinanceContext } from "../../context/financeContext"
 import "./Expense.css"
 import { useContext, useState } from "react"
-import CanvasJSReact from '@canvasjs/react-charts';
-var CanvasJS = CanvasJSReact.CanvasJS;
-var CanvasJSChart = CanvasJSReact.CanvasJSChart;
+import ExpenseGraph from "./ExpenseGraph";
 
 
 const Expense = () => {
@@ -24,7 +22,6 @@ const Expense = () => {
 
   const addExpense = (event)=>{
     event.preventDefault()
-    console.log(expense,"expensedetails")
     addexpense()
   }
 
@@ -44,59 +41,7 @@ const Expense = () => {
    }
 
 
-   const dataPoints = [];
-
-  // for (let month = 0; month < 30; month++) {
-  //  var number = month
-  //   const randomValue = Math.floor(Math.random() * 100000); // Example: random value between 0 and 50000
-  //   dataPoints.push({ x: new Date(2017, 0, number), y: randomValue });
-  // }
-
   const sortedData = allExpense.sort((a, b) => new Date(a.expense_date) - new Date(b.expense_date));
-
-  sortedData.map((e,i)=>{
-    let date = `${e.expense_date}`
-    let amount = `${e.amount}`
-    dataPoints.push({ x: new Date(date), y: Number(amount)});
-    console.log(date,amount)
-  })
-
-  console.log(dataPoints,"datapointss")
-
-   const expenses = {
-    animationEnabled: true,
-    title:{
-      text: "Monthly expense - 2024"
-    },
-    axisX: {
-      valueFormatString: "DD/MM/YYYY"
-    },
-    axisY: {
-      title: "expense (in INR)",
-      prefix: "Rs"
-    },
-    data: [{
-      yValueFormatString: "Rs#,###",
-      xValueFormatString: "DD/MM/YYYY",
-      type: "bar",
-       dataPoints:dataPoints
-      // dataPoints: [
-      //   { x: new Date(2017,0), y: 25060 },
-      //   { x: new Date(2017, 1), y: 27980 },
-      //   { x: new Date(2017, 2), y: 42800 },
-      //   { x: new Date(2017, 3), y: 32400 },
-      //   { x: new Date(2017, 4), y: 35260 },
-      //   { x: new Date(2017, 5), y: 33900 },
-      //   { x: new Date(2017, 6), y: 40000 },
-      //   { x: new Date(2017, 7), y: 52500 },
-      //   { x: new Date(2017, 8), y: 32300 },
-      //   { x: new Date(2017, 9), y: 42000 },
-      //   { x: new Date(2017, 10), y: 37160 },
-      //   { x: new Date(2017, 11), y: 38400 }
-      // ]
-     
-    }]
-  }
 
 
   return (
@@ -105,7 +50,7 @@ const Expense = () => {
         <h2>Expenses</h2>
         <span className="tags"><p>Tag</p>  <p>Desc</p> <p>Amount</p> <p>Date</p> <p></p>  <p></p></span>
         
-         {allExpense.map((e,i)=>{
+         {sortedData.map((e,i)=>{
             return(
               <div className="expense-cards" key={i}>
                 <p>Tag {e.tag}</p>
@@ -143,9 +88,7 @@ const Expense = () => {
           <button type="submit">Add Expense</button>
         </form>
       </div>
-      <div className="budget-graph-container">
-              <CanvasJSChart options = {expenses} className="chart" id={'chart'}/>
-      </div>
+      <ExpenseGraph/>
     </div>
   )
 }

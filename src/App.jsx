@@ -1,7 +1,7 @@
 
 import './App.css'
 import Budget from './components/Budget/Budget'
-import DataEntry from './components/DataEntry/DataEntry'
+import ReportGenerator from './components/DataEntry/ReportGenerator'
 import Expense from './components/Expenses/Expense'
 import Footer from './components/Footer/Footer'
 import Home from './components/Home/Home'
@@ -42,11 +42,12 @@ function App() {
               path='/report'
               element={ <Report/>}
             />
+            
         </Routes>
        </div>
        
     </div> 
-     {/* <DataEntry/> */}
+    
       
       <Footer/>
     </>

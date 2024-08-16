@@ -1,9 +1,8 @@
 import { FinanceContext } from "../../context/financeContext"
 import "./Income.css"
 import { useContext, useState } from "react"
-import CanvasJSReact from '@canvasjs/react-charts';
-var CanvasJS = CanvasJSReact.CanvasJS;
-var CanvasJSChart = CanvasJSReact.CanvasJSChart;
+import IncomeGraph from "./IncomeGraph";
+
 
 const Income = () => {
 
@@ -43,55 +42,7 @@ const Income = () => {
 
    const sortedData = allIncome.sort((a, b) => new Date(a.income_date) - new Date(b.income_date));
 
-   console.log(sortedData,"sorted data")
-
-   const dataPoints = [];
-
-   sortedData.map((e)=>{
-    let date = `${e.income_date}`
-    let amount = `${e.amount}`
-    dataPoints.push({ x: new Date(date), y: Number(amount)});
-    console.log(date,amount)
-  })
-
-  console.log(dataPoints,"datapointss")
-
-   const points = {
-    animationEnabled: true,
-    title:{
-      text: "Monthly Income - 2024"
-    },
-    axisX: {
-      valueFormatString: "DD/MM/YYYY"
-    },
-    axisY: {
-      title: "expense (in INR)",
-      prefix: "Rs"
-    },
-    data: [{
-      yValueFormatString: "Rs#,###",
-      xValueFormatString: "DD/MM/YYYY",
-      type: "spline",
-       dataPoints:dataPoints
-      // dataPoints: [
-      //   { x: new Date(2017,0), y: 25060 },
-      //   { x: new Date(2017, 1), y: 27980 },
-      //   { x: new Date(2017, 2), y: 42800 },
-      //   { x: new Date(2017, 3), y: 32400 },
-      //   { x: new Date(2017, 4), y: 35260 },
-      //   { x: new Date(2017, 5), y: 33900 },
-      //   { x: new Date(2017, 6), y: 40000 },
-      //   { x: new Date(2017, 7), y: 52500 },
-      //   { x: new Date(2017, 8), y: 32300 },
-      //   { x: new Date(2017, 9), y: 42000 },
-      //   { x: new Date(2017, 10), y: 37160 },
-      //   { x: new Date(2017, 11), y: 38400 }
-      // ]
-     
-    }]
-  }
-
-
+  
 var total = getTotalIncomeAmount()
 
   return (
@@ -104,12 +55,12 @@ var total = getTotalIncomeAmount()
         <div className="income-card-container">
            <div className="income-card">
            <p>Salary</p>
-            {allIncome.map((e,i)=>{
+            {sortedData.map((e,i)=>{
   
              if(`${e.tag}`=="salary"){
                 return(
                   <div key={i} className="data-flow">
-                    <p>{i})</p>
+                    <p>*</p>
                     <p>{e.income_date}</p>
                     <p>RS. {e.amount}</p>
                   </div>
@@ -127,7 +78,7 @@ var total = getTotalIncomeAmount()
                 if(`${e.tag}`=="investment"){
                   return(
                     <div key={i} className="data-flow">
-                      <p>{i})</p>
+                      <p>*</p>
                       <p>{e.income_date}</p>
                       <p>RS. {e.amount}</p>
                     </div>
@@ -143,7 +94,7 @@ var total = getTotalIncomeAmount()
                 if(`${e.tag}`=="freelance"){
                   return(
                     <div key={i} className="data-flow">
-                      <p>{i})</p>
+                      <p>*</p>
                       <p>{e.income_date}</p>
                       <p>RS. {e.amount}</p>
                     </div>
@@ -159,7 +110,7 @@ var total = getTotalIncomeAmount()
                   if(`${e.tag}`=="other"){
                     return(
                       <div key={i} className="data-flow">
-                        <p>{i})</p>
+                        <p>*</p>
                         <p>{e.income_date}</p>
                         <p>RS. {e.amount}</p>
                       </div>
@@ -188,9 +139,7 @@ var total = getTotalIncomeAmount()
         </form>
       </div>
       </div>
-      <div className="budget-graph-container">
-              <CanvasJSChart options = {points} className="chart" id={'chart'}/>
-      </div>
+      <IncomeGraph/>
     </div>
   )
 }

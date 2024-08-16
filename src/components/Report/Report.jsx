@@ -1,6 +1,8 @@
-import { useState } from "react"
+import { useState} from "react"
 import "./Report.css"
-import DataEntry from "../DataEntry/DataEntry"
+import ReportGenerator from "../DataEntry/ReportGenerator"
+import { Link, Route, Routes } from "react-router-dom"
+import { RxCross2 } from "react-icons/rx";
 
 const Report = () => {
 
@@ -8,14 +10,20 @@ const Report = () => {
 
   })
 
-
   const changeHandler = (e)=>{
     setReportData((prev)=>({...prev,[e.target.name]:e.target.value}))
+  }
+
+  const[toggle,setToggle] = useState(false)
+
+  const Toggle=()=>{
+    setToggle(!toggle)
   }
 
   const print = (event)=>{
     event.preventDefault()
     console.log(reportData,"reportdata")
+    Toggle()
   }
   return (
     <div className="report-container">
@@ -52,10 +60,9 @@ const Report = () => {
           <select name="topic" id="topic" value={reportData.topic} onChange={changeHandler}>
             
             <option value="Income">Income</option>
-            <option value="expenses">Expenses</option>
-            <option value="savings">Savings</option>
-            <option value="budget">Budget</option>
-            <option value="all">All</option>
+            <option value="Expenses">Expenses</option>
+            <option value="Savings">Savings</option>
+            <option value="Budget">Budget</option>
           </select>
         </span>
         <span>
@@ -68,7 +75,19 @@ const Report = () => {
        
         <button type="submit">Generate Report</button>
       </form>
-      <DataEntry report={reportData}/>
+      {/* <Routes>
+        <Route
+        path='/report/generatereport'
+        element={<ReportGenerator reportData={reportData}/>}
+        />
+      </Routes> */}
+      {toggle &&(
+        <div className="toggle-container">
+          <ReportGenerator reportData={reportData}/>
+          <RxCross2 onClick={Toggle} id="icon"/>
+        </div>    
+      )}
+     
     </div>
   )
 }

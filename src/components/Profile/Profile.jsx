@@ -1,6 +1,7 @@
 import { useContext } from "react"
 import "./Profile.css"
 import { FinanceContext } from "../../context/financeContext"
+import { CgProfile } from "react-icons/cg";
 
 const Profile = (props) => {
 
@@ -13,11 +14,10 @@ const Profile = (props) => {
   }
   return (
     <div className="profile-container">
-      profile
-      <img src="" alt="" />
+      <CgProfile id="icon-profile"/>
       <h2>{userData.name}</h2>
-      <h3>Email:{userData.email}</h3>
-      <h3>Phone: {userData.phone}</h3>
+      <span><h3>Email:</h3>&nbsp;&nbsp;&nbsp;<p>{userData.email}</p></span>
+      <span><h3>Phone:</h3> &nbsp;  &nbsp; <p>{userData.phone}</p></span>
       <div>
         <button>Edit</button>
         <button onClick={logout}>SignOut</button>

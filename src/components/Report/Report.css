@@ -10,3 +10,13 @@
     border-radius: 15px;
     box-shadow: 2px 2px 15px rgba(0,0,0,0.2),-2px -2px 15px rgba(0,0,0,0.2);
  }
+
+
+ .toggle-container{
+    height: 80vh;
+    width: 80vw;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    position: absolute;
+ }

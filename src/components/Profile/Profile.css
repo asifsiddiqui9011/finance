@@ -3,11 +3,17 @@
    width: 320px;
    display: flex;
    flex-direction: column;
-   align-items: center;
-   justify-content:start;
-   gap: 20px;
+   align-items:center;
+   justify-content:space-between;
+   gap: 10px;
    padding: 10px;
    border-radius: 15px;
    background-color: white;
    box-shadow: 5px 5px 15px rgba(0,0,0,0.2), -5px -5px 15px rgba(0,0,0,0.2);
+}
+
+#icon-profile{
+  font-size: 50px;
+  margin: 20px;
+
 }

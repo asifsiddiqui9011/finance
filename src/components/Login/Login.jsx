@@ -14,7 +14,6 @@ const Login = (props) => {
   }
 
   const loginn = async () =>{
-		console.log("Login Function Executed",userData)
 		let responseData;
 		await fetch('http://localhost:3000/api/login',{
 			method:'POST',
@@ -28,7 +27,6 @@ const Login = (props) => {
 		if(responseData.success){
 			localStorage.setItem('auth-token',responseData.token);
       props.toggle()
-      // window.location.replace("/home");
 		}else{
 			alert(responseData.errors );
 		}
