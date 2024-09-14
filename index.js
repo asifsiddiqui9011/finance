@@ -40,7 +40,7 @@ app.use("/api",incomeRoutes);
 
 app.listen(port,(error)=>{
     if(!error){
-        console.log("App is listening on port "+port)
+        console.log("App is listening on port "+ port)
     }else{
         console.log("Error:" +error)
     }

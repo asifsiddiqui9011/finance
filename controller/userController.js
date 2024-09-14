@@ -1,5 +1,5 @@
 const User = require("../models/users"); // Make sure to adjust the path of model
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken")
 
 const secretKey = process.env.JWT_SECRETKEY
