@@ -12,7 +12,6 @@ exports.createIncome = async (req,res)=>{
         }
         
         const userID = req.user.id
-        console.log(userID,"userIDDD")
         const income = new Income ({
 
             tag,
@@ -22,12 +21,8 @@ exports.createIncome = async (req,res)=>{
         })
    
         await income.save();
-        console.log(income,"income")
         let objId =income.id;
-        console.log(`${objId}`,userID)
         const use = await User.findByIdAndUpdate(userID,{$push:{income:[objId]}});
-        console.log(use)
-        console.log("saved");
         res.status(201).json({success:true});
     } catch (error) {
         console.error("Error adding income:", error); // Log the error details
@@ -40,7 +35,7 @@ exports.createIncome = async (req,res)=>{
 //delete expense
 exports.deleteIncome = async (req, res) => {
     try {
-      const deletedIncome = await Salary.findByIdAndDelete(req.params.id);
+      const deletedIncome = await Income.findByIdAndDelete(req.params.id);
       if (!deletedIncome) {
         return res.status(500).json({ message: "Income deleting Error" });
       }
@@ -70,7 +65,7 @@ exports.updateIncome = async (req, res) => {
           runValidators: true,
         }
       );
-      res.status(200).json(updatedIncome);
+      res.status(200).json({success:true});
     } catch (error) {
       res.status(500).json({ message: "Error updating Salary", error });
     }
@@ -87,3 +82,50 @@ exports.updateIncome = async (req, res) => {
     }
   };
 
+  
+  exports.getIncome = async (req, res) => {
+    try {
+      const userID = req.user.id;
+  
+      // Base filter to ensure expenses are filtered by the authenticated user
+      let filter = { user: userID };
+  
+      const startDate = req.query.startDate; // Start date in "YYYY-MM-DD" format
+      const endDate = req.query.endDate; // End date in "YYYY-MM-DD" format
+      const month = req.query.month; // Month in "MM" format
+      const year = req.query.year; // Year in "YYYY" format
+  
+      if (startDate && endDate) {
+        // Filter by specific date range
+        filter.income_date = {
+          $gte: startDate, // Greater than or equal to startDate
+          $lte: endDate,   // Less than or equal to endDate
+        };
+      } else if (month && year) {
+        // Filter by month and year
+        const monthStart = `${year}-${month}-01`; // Start of the month
+        const monthEnd = new Date(year, parseInt(month), 0).toISOString().slice(0, 10); // Last day of the month in "YYYY-MM-DD" format
+        
+        filter.income_date = {
+          $gte: monthStart, // Greater than or equal to the first day of the month
+          $lte: monthEnd,   // Less than or equal to the last day of the month
+        };
+      } else if (year) {
+        // Filter by year only
+        filter.income_date = {
+          $regex: `^${year}-`, // Matches any date starting with the specified year (e.g., "2024-")
+        };
+      }
+  
+      // Fetch the filtered expenses from the database
+      const income = await Income.find(filter);
+      
+      // Respond with the filtered expenses
+      res.send(income);
+    } catch (error) {
+      console.error("Error retrieving Income:", error);
+      res.status(500).json({ message: "Error retrieving incomes" });
+    }
+  };
+  
+  

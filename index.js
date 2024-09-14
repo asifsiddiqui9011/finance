@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const app = express();
 // const jwt = require("jsonwebtoken");
 const cors = require("cors");
+require('dotenv').config();
 // const path = require("path");
 const userRoutes = require("./Routes/userRoute");
 const expenseRoutes = require("./Routes/expenseRoutes");
@@ -14,7 +15,8 @@ app.use(express.json());
 app.use(cors());
 
 //database connection
-mongoose.connect("mongodb+srv://asifsiddiqui9011:EGdASvzHuRqrUsmh@cluster0.ti8tw.mongodb.net/?retryWrites=true&w=majority&appName=FinanceManagement")
+const url = process.env.DATABASE_URL
+mongoose.connect(url)
 
 //Api crreation
 app.get("/",(req,res)=>{

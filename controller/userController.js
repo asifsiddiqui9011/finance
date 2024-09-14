@@ -2,6 +2,8 @@ const User = require("../models/users"); // Make sure to adjust the path of mode
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken")
 
+const secretKey = process.env.JWT_SECRETKEY
+
 // Create a new user
 exports.createUser = async (req, res) => {
   try {
@@ -28,14 +30,12 @@ exports.createUser = async (req, res) => {
     });
 
     await user.save();
-    console.log(user,"userdetails")
     const data = {
       user:{
           id:user.id
       }
   }
-  console.log(data,"user id data")
-  const token = jwt.sign(data,'secret_Finance');
+  const token = jwt.sign(data,secretKey)
   res.status(200).json({success:true,token})
   } catch (error) {
     console.error("Error creating user:", error); // Log the error details
@@ -131,14 +131,12 @@ exports.userLogin = async (req,res) =>{
         if(!ismatch){
           res.status(401).json({message:"invalid password"})
         }else{
-          console.log(user,"userdetails")
             const data = {
               user:{
                   id:user.id
               }
           }
-          console.log(data,"user id data")
-          const token = jwt.sign(data,'secret_Finance');
+          const token = jwt.sign(data,secretKey);
           res.status(200).json({success:true,token})
         }
       }) 
