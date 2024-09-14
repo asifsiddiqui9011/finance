@@ -1,4 +1,4 @@
-const port = 8080;
+const port = process.env.PORT
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
@@ -38,7 +38,7 @@ app.use("/api",budgetRoutes);
 app.use("/api",incomeRoutes);
 
 
-app.listen(3000,(error)=>{
+app.listen(port,(error)=>{
     if(!error){
         console.log("App is listening on port "+port)
     }else{
