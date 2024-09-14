@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@canvasjs/charts": "^3.10.2",
+    "@canvasjs/charts": "^3.10.7",
     "@canvasjs/react-charts": "^1.0.2",
     "@react-pdf/renderer": "^3.4.4",
     "chart.js": "^4.4.3",
