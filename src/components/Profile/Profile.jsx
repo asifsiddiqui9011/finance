@@ -5,12 +5,13 @@ import { CgProfile } from "react-icons/cg";
 
 const Profile = (props) => {
 
-  const{userData} = useContext(FinanceContext)
+  const{userData, fetchUser} = useContext(FinanceContext)
   console.log(userData,"userdata")
 
   const logout = ()=>{
     localStorage.removeItem('auth-token')
     props.toggle()
+    fetchUser()
   }
   return (
     <div className="profile-container">

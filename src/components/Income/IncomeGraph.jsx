@@ -1,12 +1,19 @@
 import CanvasJSReact from '@canvasjs/react-charts';
 var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { FinanceContext } from '../../context/financeContext';
 
 const IncomeGraph = () => {
     const {allIncome} = useContext(FinanceContext)
     const sortedData = allIncome.sort((a, b) => new Date(a.income_date) - new Date(b.income_date));
+
+    const[type,setType] = useState("spline")
+
+  const handleType = (e)=>{
+    setType(e.target.value)
+    // console.log(type,"type",e.target.value)
+  }
 
    const dataPoints = [];
 
@@ -14,8 +21,9 @@ const IncomeGraph = () => {
     let date = `${e.income_date}`
     let amount = `${e.amount}`
     dataPoints.push({ x: new Date(date), y: Number(amount)});
-    console.log(date,amount)
   })
+
+
 
 
    const points = {
@@ -33,7 +41,7 @@ const IncomeGraph = () => {
     data: [{
       yValueFormatString: "Rs#,###",
       xValueFormatString: "DD/MM/YYYY",
-      type: "spline",
+      type: `${type}`,
        dataPoints:dataPoints
          
     }]
@@ -42,6 +50,10 @@ const IncomeGraph = () => {
 
   return (
     <div className="budget-graph-container">
+      <select name="type" id="type" value={type} onChange={handleType}>
+           <option value="bar">bar</option>
+           <option value="spline">spline</option>
+        </select>
         <CanvasJSChart options = {points} className="chart" id={'chart'}/>
       </div>
   )

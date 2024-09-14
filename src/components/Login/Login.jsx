@@ -1,9 +1,11 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import "./Login.css"
 import loginImg from "../../assets/login.jpg"
+import { FinanceContext } from "../../context/financeContext"
 
 const Login = (props) => {
-
+  
+  const{ url,fetchUser} = useContext(FinanceContext)
   const [userData,setUserData] = useState ({
    
     email:"",
@@ -16,7 +18,7 @@ const Login = (props) => {
 
   const loginn = async () =>{
 		let responseData;
-		await fetch('http://localhost:3000/api/login',{
+		await fetch(`${url}/api/login`,{
 			method:'POST',
 			headers:{
 				Accept:'application/form-data',
@@ -27,6 +29,7 @@ const Login = (props) => {
 
 		if(responseData.success){
 			localStorage.setItem('auth-token',responseData.token);
+      fetchUser()
       props.toggle()
 		}else{
 			alert(responseData.errors );

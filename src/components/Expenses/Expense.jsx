@@ -2,11 +2,16 @@ import { FinanceContext } from "../../context/financeContext"
 import "./Expense.css"
 import { useContext, useState } from "react"
 import ExpenseGraph from "./ExpenseGraph";
+import { MdEdit } from "react-icons/md";
+import { MdDelete } from "react-icons/md";
+import EditExpense from "./EditExpense";
 
 
 const Expense = () => {
 
-  const{allExpense}= useContext(FinanceContext)
+
+
+  const{url,allExpense,deleteExpense,setEditExpense,editmodel,editExpenseToggler}= useContext(FinanceContext)
 
   const [expense,setExpenseData] = useState ({
 
@@ -26,7 +31,7 @@ const Expense = () => {
   }
 
   const addexpense = async ()=>{
-    await fetch('http://localhost:3000/api/expense',{
+    await fetch(`${url}/api/expense`,{
       method:'POST',
       headers:{
         Accept:'application/json',
@@ -36,16 +41,30 @@ const Expense = () => {
       body:JSON.stringify(expense),
     }).then((resp)=>resp.json())
       .then((data)=>{
-      data.success?alert("Address Added"):alert("Failed")
+      data.success?alert("Expense Added"):alert("Failed")
     })
    }
-
-
   const sortedData = allExpense.sort((a, b) => new Date(a.expense_date) - new Date(b.expense_date));
 
 
+  const handleDelete=(e)=>{
+        deleteExpense(e)   
+  }
+
+ 
+
+  const handleEdit = (e)=>{
+    setEditExpense(e)
+      editExpenseToggler()
+      
+  }
+
   return (
     <div className="expense-container">
+      {editmodel &&(
+        <EditExpense/>
+      )}
+     
       <div className="expense-chart">
         <h2>Expenses</h2>
         <span className="tags"><p>Tag</p>  <p>Desc</p> <p>Amount</p> <p>Date</p> <p></p>  <p></p></span>
@@ -57,8 +76,12 @@ const Expense = () => {
                 <p>{e.description}</p>
                 <p><b>RS.{e.amount}</b></p>
                 <p>{e.expense_date}</p>
-                <button>Edit</button>
-                <button>Remove</button>
+                <div onClick={()=>{handleEdit(e)}}>
+                    <MdEdit />
+                  </div>
+                  <div onClick={()=>handleDelete(e._id)}>
+                     <MdDelete/>
+                  </div>
               </div>
             )
           })} 

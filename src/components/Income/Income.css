@@ -6,7 +6,7 @@
   gap: 20px;
 }
 .income-container{
-  height: 500px;
+  /* height: 500px; */
   /* width: 800px; */
   /* border: 2px solid black; */
   display: flex;
@@ -26,21 +26,46 @@
 }
 
 .income-card{
-    height: 200px;
-    width: 220px;
-    background-color: rgb(19, 255, 192);
-    color: white;
+    height: 250px;
+    width: 280px;
+    color: black;
     text-align: center;
     border-radius: 10px;
     overflow: scroll;
     scrollbar-width:none;
+    padding: 10px;
     scrollbar-color: black;
+    box-shadow: 1px 1px 10px rgba(0,0,0,0.4);
 
 }
 
-.data-flow{
+.data-flow-income{
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 20px;
+  border: 1px solid blACK;
+  border-radius: 10px;
+  margin: 2px;
+  color: black;
+}
+
+.cards-box{
+  display:flex;
+  width: 800px;
+  flex-wrap: wrap;
+  gap: 25px;
+  padding: 10px;
+}
+
+.income-chart{
+  background-color: white;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+
 }

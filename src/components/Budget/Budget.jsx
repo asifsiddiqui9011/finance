@@ -3,10 +3,16 @@ import "./Budget.css"
 import { useState } from "react"
 import { FinanceContext } from "../../context/financeContext"
 import BudgetGraph from "./BudgetGraph";
+import { MdEdit } from "react-icons/md";
+import { MdDelete } from "react-icons/md";
+import EditBudget from "./EditBudget";
+
 
 const Budget = () => {
 
-  const{allBudget} = useContext(FinanceContext)
+
+const url = 'https://finance-v28v.onrender.com'
+  const{allBudget,deleteBudget,getBudget,budgetModel,editBudgetToggler,setEditBudget} = useContext(FinanceContext)
 
   const [budget,setbudgetData] = useState ({
 
@@ -27,7 +33,7 @@ const Budget = () => {
   }
 
   const addBudget = async ()=>{
-    await fetch('http://localhost:3000/api/budget',{
+    await fetch(`${url}/api/budget`,{
       method:'POST',
       headers:{
         Accept:'application/json',
@@ -38,11 +44,27 @@ const Budget = () => {
     }).then((resp)=>resp.json())
       .then((data)=>{
       data.success?alert("Budget Added"):alert("Failed")
+      getBudget()
     })
    }
 
+   const handleDelete=(e)=>{ 
+    deleteBudget(e)
+}
+
+const handleEdit = (e)=>{
+  setEditBudget(e)
+  editBudgetToggler()
+    
+}
+
+budgetModel
+
   return (
     <div className="budget-container">
+      {budgetModel &&(
+        <EditBudget/>
+      )}
       <div className="budget-display-container">
         <h2>Budget</h2>
         <select name="month" id="month" onChange={changeHandler} >
@@ -62,9 +84,16 @@ const Budget = () => {
         
         {allBudget.map((e,i)=>{
           return(
-                <div key={i} className="data-flow">
+                <div key={i} className="data-flow-budget">
                   <p>Tag: {e.tag}</p>
                   <p>Amount: Rs. {e.amount}</p>
+                  <div onClick={()=>{handleEdit(e)}}>
+                    <MdEdit />
+                  </div>
+                  <div onClick={()=>handleDelete(e._id)}>
+                     <MdDelete/>
+                  </div>
+                
                </div>
           )
         })}

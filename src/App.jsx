@@ -1,7 +1,7 @@
 
+import { useContext } from 'react'
 import './App.css'
 import Budget from './components/Budget/Budget'
-import ReportGenerator from './components/DataEntry/ReportGenerator'
 import Expense from './components/Expenses/Expense'
 import Footer from './components/Footer/Footer'
 import Home from './components/Home/Home'
@@ -10,15 +10,19 @@ import Navbar from './components/Navbar/Navbar'
 import Report from './components/Report/Report'
 import Sidebar from './components/Sidebar/Sidebar'
 import { Routes,Route } from 'react-router-dom'
+import { FinanceContext } from './context/financeContext'
 
 function App() {
+  const {userData}= useContext(FinanceContext)
 
+  
   return (
     <>
       <Navbar/>
       <Sidebar/>
-
-      <div className='display-container'>
+    {!userData.email ? <div className='login-message'><h1>Please login/SignUp to get the Dashboard.............</h1> </div>:
+       
+    <div className='display-container'>
        
        <div className='elements-container'>
         <Routes>
@@ -46,9 +50,7 @@ function App() {
         </Routes>
        </div>
        
-    </div> 
-    
-      
+    </div>  }
       <Footer/>
     </>
   )

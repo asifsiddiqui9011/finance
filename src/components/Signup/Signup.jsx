@@ -1,8 +1,10 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import SignupImg from "../../assets/signup.jpg"
+import { FinanceContext } from "../../context/financeContext"
 
 const Signup = (props) => {
-
+  
+  const{url}=useContext(FinanceContext)
   const [signupData,setSignupData] = useState ({
     
     name:"",
@@ -18,16 +20,15 @@ const Signup = (props) => {
 
   const sign=(event)=>{
     event.preventDefault()
-    console.log(signupData,"logindetails")
     signup()
   }
 
 
   const signup = async () =>{
-		// console.log("signup Function Executed",signupData);\
+
     try {
       let responseData;
-		await fetch('http://localhost:3000/api/users',{
+		await fetch(`${url}/api/users`,{
 			method:'POST',
 			headers:{
 				Accept:'application/form-data',
@@ -35,7 +36,6 @@ const Signup = (props) => {
 			},
 			body:JSON.stringify(signupData),
 		}).then((response)=>response.json()).then((data)=>responseData=data)
-     console.log(responseData.success,"success")
 		if(responseData.success){
 			localStorage.setItem('auth-token',responseData.token);
 			props.toggle()
@@ -45,9 +45,7 @@ const Signup = (props) => {
       alert(error)
     }
 		
-		// }else{
-		// 	alert(responseData.errors );
-		// }
+
 	}
 
   
