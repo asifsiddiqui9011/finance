@@ -1,7 +1,6 @@
 import { useState} from "react"
 import "./Report.css"
 import ReportGenerator from "../DataEntry/ReportGenerator"
-import { Link, Route, Routes } from "react-router-dom"
 import { RxCross2 } from "react-icons/rx";
 
 const Report = () => {
