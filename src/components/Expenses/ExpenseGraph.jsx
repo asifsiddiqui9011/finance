@@ -25,7 +25,7 @@ const ExpenseGraph = (props) => {
   })
 
   
-  console.log(dataPoints,"datapointss")
+  
 
   const[type,setType] = useState("bar")
 
