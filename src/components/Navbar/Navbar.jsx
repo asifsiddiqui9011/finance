@@ -3,7 +3,6 @@ import "./Navbar.css"
 import { CgProfile } from "react-icons/cg";
 import Signup from "../Signup/Signup";
 import Login from "../Login/Login";
-import { RxCrossCircled } from "react-icons/rx";
 import { RxCross2 } from "react-icons/rx";
 import Profile from "../Profile/Profile";
 import { FinanceContext } from "../../context/financeContext";

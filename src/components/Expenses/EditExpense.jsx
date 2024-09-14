@@ -1,11 +1,11 @@
-import { useContext, useState } from "react"
+import { useContext, } from "react"
 import { FinanceContext } from "../../context/financeContext"
 import { RxCross2 } from "react-icons/rx";
 
 const EditExpense = (props) => {
 
   const url = 'https://finance-v28v.onrender.com'
-   const {editExpense,setEditExpense,editmodel,setEditModel,getExpense,editExpenseToggler} = useContext(FinanceContext)
+   const {editExpense,setEditExpense,getExpense,editExpenseToggler} = useContext(FinanceContext)
    
   
   
