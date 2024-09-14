@@ -1,12 +1,10 @@
 import { useContext } from "react";
 import "./Home.css"
-import CanvasJSReact from '@canvasjs/react-charts';
 import { FinanceContext } from "../../context/financeContext";
 import { Link } from "react-router-dom";
 import ExpenseGraph from "../Expenses/ExpenseGraph";
 import BudgetGraph from "../Budget/BudgetGraph";
-var CanvasJS = CanvasJSReact.CanvasJS;
-var CanvasJSChart = CanvasJSReact.CanvasJSChart;
+
 
 
 
@@ -17,28 +15,28 @@ var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 const Home = () => {
 
   const {getTotalIncomeAmount,getTotalExpenseAmount,getTotalBudgetAmount} = useContext(FinanceContext)
-  const options = {
-    animationEnabled: true,
-    exportEnabled: true,
-    theme: "light1", // "light1", "dark1", "dark2"
-    title:{
-      text: "Budget"
-    },
-    data: [{
-      type: "pie",
-      indexLabel: "{label}: {y}%",		
-      startAngle: -90,
-      dataPoints: [
-        { y: 20, label: "Medical" },
-        { y: 24, label: "Food & Drinks" },
-        { y: 20, label: "Accomodation" },
-        { y: 14, label: "Transportation" },
-        { y: 12, label: "Activities" },
-        { y: 10, label: "Groceries" }	
-      ]
-    }]
+  // const options = {
+  //   animationEnabled: true,
+  //   exportEnabled: true,
+  //   theme: "light1", // "light1", "dark1", "dark2"
+  //   title:{
+  //     text: "Budget"
+  //   },
+  //   data: [{
+  //     type: "pie",
+  //     indexLabel: "{label}: {y}%",		
+  //     startAngle: -90,
+  //     dataPoints: [
+  //       { y: 20, label: "Medical" },
+  //       { y: 24, label: "Food & Drinks" },
+  //       { y: 20, label: "Accomodation" },
+  //       { y: 14, label: "Transportation" },
+  //       { y: 12, label: "Activities" },
+  //       { y: 10, label: "Groceries" }	
+  //     ]
+  //   }]
  
-  }
+  // }
 
   
   return (
