@@ -1,5 +1,4 @@
 import CanvasJSReact from '@canvasjs/react-charts';
-// var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 import { useContext } from 'react';
 import { FinanceContext } from '../../context/financeContext';

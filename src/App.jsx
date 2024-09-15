@@ -20,7 +20,7 @@ function App() {
     <>
       <Navbar/>
       <Sidebar/>
-    {!userData.email ? <div className='login-message'><h1>Please login/SignUp to get the Dashboard.............</h1> </div>:
+    {/* {!userData.email ? <div className='login-message'><h1>Please login/SignUp to get the Dashboard.............</h1> </div>:
        
     <div className='display-container'>
        
@@ -50,7 +50,7 @@ function App() {
         </Routes>
        </div>
        
-    </div>  }
+    </div>  } */}
       <Footer/>
     </>
   )
