@@ -5,7 +5,7 @@ const app = express();
 // const jwt = require("jsonwebtoken");
 const cors = require("cors");
 require('dotenv').config();
-// const path = require("path");
+const path = require("path");
 const userRoutes = require("./Routes/userRoute");
 const expenseRoutes = require("./Routes/expenseRoutes");
 const budgetRoutes = require("./Routes/budgetRoutes");
@@ -24,6 +24,14 @@ app.get("/",(req,res)=>{
     res.send("express app is")
 })
 
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, 'finance/build')));
+
+    // Serve the React index.html file for any other route
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname, 'finance/build', 'index.html'));
+    });
+}
 
 //getting user routes
 app.use("/api",userRoutes);
