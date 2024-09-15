@@ -11,8 +11,8 @@ import EditBudget from "./EditBudget";
 const Budget = () => {
 
 
-const url = 'https://finance-v28v.onrender.com'
-  const{allBudget,deleteBudget,getBudget,budgetModel,editBudgetToggler,setEditBudget} = useContext(FinanceContext)
+
+  const{url,allBudget,deleteBudget,getBudget,budgetModel,editBudgetToggler,setEditBudget} = useContext(FinanceContext)
 
   const [budget,setbudgetData] = useState ({
 
