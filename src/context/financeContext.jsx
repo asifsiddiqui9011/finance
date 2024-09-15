@@ -54,7 +54,7 @@ const FinanceContextProvider = (props) => {
                 headers:{
                     Accept:'applocation/form-data',
                     'auth-token':`${localStorage.getItem('auth-token')}`,
-                    'Content-Type':'application/json',
+                    'Content-Type':'application/json/javascrip',
                 },
                
             })
@@ -86,7 +86,7 @@ const FinanceContextProvider = (props) => {
                 headers:{
                     Accept:'applocation/fporm-data',
                     'auth-token':`${localStorage.getItem('auth-token')}`,
-                    'Content-Type':'application/json',
+                    'Content-Type':'application/json/javascrip',
                 },
               
             })
@@ -118,7 +118,7 @@ const FinanceContextProvider = (props) => {
                 headers:{
                     Accept:'applocation/form-data',
                     'auth-token':`${localStorage.getItem('auth-token')}`,
-                    'Content-Type':'application/json',
+                    'Content-Type':'application/json/javascrip',
                 },
              
             })
@@ -135,7 +135,7 @@ const FinanceContextProvider = (props) => {
                 headers:{
                     Accept:'applocation/fporm-data',
                     'auth-token':`${localStorage.getItem('auth-token')}`,
-                    'Content-Type':'application/json',
+                    'Content-Type':'application/json/javascrip',
                 },
                 body:JSON.stringify(),
             })
@@ -151,7 +151,7 @@ const FinanceContextProvider = (props) => {
                 headers:{
                     Accept:'applocation/json',
                     'auth-token':`${localStorage.getItem('auth-token')}`,
-                    'Content-Type':'application/json',
+                    'Content-Type':'application/json/javascrip',
                 },
                
             })
@@ -167,7 +167,7 @@ const FinanceContextProvider = (props) => {
                 headers:{
                     Accept:'applocation/json',
                     'auth-token':`${localStorage.getItem('auth-token')}`,
-                    'Content-Type':'application/json',
+                    'Content-Type':'application/json/javascript',
                 }, 
             })
             .then((res)=>{res.json()})
@@ -182,7 +182,7 @@ const FinanceContextProvider = (props) => {
                 headers:{
                     Accept:'applocation/json',
                     'auth-token':`${localStorage.getItem('auth-token')}`,
-                    'Content-Type':'application/json',
+                    'Content-Type':'application/json/javascript',
                 },
                
             })
