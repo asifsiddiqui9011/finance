@@ -1,4 +1,4 @@
-const port = process.env.PORT
+const port = (process.env.PORT || 3000)
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
@@ -24,14 +24,14 @@ app.get("/",(req,res)=>{
     res.send("express app is")
 })
 
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, 'finance/build')));
+// if (process.env.NODE_ENV === 'production') {
+//     app.use(express.static(path.join(__dirname, 'finance/build')));
 
-    // Serve the React index.html file for any other route
-    app.get('*', (req, res) => {
-        res.sendFile(path.join(__dirname, 'finance/build', 'index.html'));
-    });
-}
+//     // Serve the React index.html file for any other route
+//     app.get('*', (req, res) => {
+//         res.sendFile(path.join(__dirname, 'finance/build', 'index.html'));
+//     });
+// }
 
 //getting user routes
 app.use("/api",userRoutes);
