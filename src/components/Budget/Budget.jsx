@@ -2,7 +2,7 @@ import { useContext } from "react"
 import "./Budget.css"
 import { useState } from "react"
 import { FinanceContext } from "../../context/financeContext"
-import BudgetGraph from "./BudgetGraph";
+// import BudgetGraph from "./BudgetGraph";
 import { MdEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 import EditBudget from "./EditBudget";
@@ -150,7 +150,7 @@ budgetModel
           <button type="submit">Add budget</button>
         </form>
       </div>
-      <BudgetGraph />
+     {/*<BudgetGraph />*/ } 
     </div>
   )
 }

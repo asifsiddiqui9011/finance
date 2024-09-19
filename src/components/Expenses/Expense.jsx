@@ -1,7 +1,7 @@
 import { FinanceContext } from "../../context/financeContext"
 import "./Expense.css"
 import { useContext, useState } from "react"
-import ExpenseGraph from "./ExpenseGraph";
+// import ExpenseGraph from "./ExpenseGraph";
 import { MdEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 import EditExpense from "./EditExpense";
@@ -112,7 +112,7 @@ const Expense = () => {
           <button type="submit">Add Expense</button>
         </form>
       </div>
-      <ExpenseGraph/>
+      {/* <ExpenseGraph/> */}
     </div>
   )
 }

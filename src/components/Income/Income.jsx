@@ -1,7 +1,7 @@
 import { FinanceContext } from "../../context/financeContext"
 import "./Income.css"
 import { useContext, useState } from "react"
-import IncomeGraph from "./IncomeGraph";
+// import IncomeGraph from "./IncomeGraph";
 import { MdEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 import EditIncome from "./EditIncome";
@@ -186,7 +186,7 @@ var total = getTotalIncomeAmount()
                </div>
             </div>
        </div>
-       <IncomeGraph/>
+       {/* <IncomeGraph/> */}
     </div>
   )
 }

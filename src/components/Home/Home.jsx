@@ -2,8 +2,8 @@ import { useContext } from "react";
 import "./Home.css"
 import { FinanceContext } from "../../context/financeContext";
 import { Link } from "react-router-dom";
-import ExpenseGraph from "../Expenses/ExpenseGraph";
-import BudgetGraph from "../Budget/BudgetGraph";
+// import ExpenseGraph from "../Expenses/ExpenseGraph";
+// import BudgetGraph from "../Budget/BudgetGraph";
 
 
 
@@ -71,9 +71,9 @@ const Home = () => {
         </Link>
         
       </div>
-        <ExpenseGraph style={{height:"480px",width:"820px"}}/>
+        {/* <ExpenseGraph style={{height:"480px",width:"820px"}}/> */}
     </div>
-      <BudgetGraph style={{height:"660px",width:"380px", margin:"10px"}}/>
+      {/* <BudgetGraph style={{height:"660px",width:"380px", margin:"10px"}}/> */}
     </>
   )
 }
