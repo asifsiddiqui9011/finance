@@ -61,8 +61,7 @@ const FinanceContextProvider = (props) => {
             .then((response)=>response.json())
             .then((data)=>setAllExpense(data));
             console.log(allExpense,"all expense")
-        }
-     
+        } 
 
     //  const getBudget = async ()=>{
     //     if(localStorage.getItem('auth-token')){

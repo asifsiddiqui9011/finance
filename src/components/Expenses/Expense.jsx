@@ -11,7 +11,7 @@ const Expense = () => {
 
 
 
-  const{url,allExpense,deleteExpense,setEditExpense,editmodel,editExpenseToggler}= useContext(FinanceContext)
+  const{getExpense,url,allExpense,deleteExpense,setEditExpense,editmodel,editExpenseToggler}= useContext(FinanceContext)
 
   const [expense,setExpenseData] = useState ({
 
@@ -42,6 +42,7 @@ const Expense = () => {
     }).then((resp)=>resp.json())
       .then((data)=>{
       data.success?alert("Expense Added"):alert("Failed")
+      getExpense()
     })
    }
   const sortedData = allExpense.sort((a, b) => new Date(a.expense_date) - new Date(b.expense_date));
