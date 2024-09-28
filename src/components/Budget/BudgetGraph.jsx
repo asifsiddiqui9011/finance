@@ -47,3 +47,40 @@
 // }
 
 // export default BudgetGraph
+
+import { useContext } from 'react';
+import { FinanceContext } from '../../context/financeContext';
+import {Chart as ChartJs} from 'chart.js/auto'
+import {Bar,Doughnut,Line} from 'react-chartjs-2'
+
+const BudgetGraph = () => {
+
+    const{allBudget,getTotalBudgetAmount} = useContext(FinanceContext)
+
+      let totalAmount = getTotalBudgetAmount()
+    
+     let budgetwidgets = {Groceries:0,Medical:0,investments:0,Emis:0,fees:0,households:0,Others:0}
+    
+  return (
+    <div>
+      <Bar
+        data={{
+            labels:["A","B","C"],
+            datasets:[
+                {
+                 label:"Revenue",
+                 data:[200,400,600]
+                },
+                {
+                 label:"Cost",
+                 data:[100,300,500]
+                 },
+            ],
+        }}
+      />
+    </div>
+  )
+}
+
+export default BudgetGraph
+
