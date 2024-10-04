@@ -17,14 +17,15 @@
 }
 
 .budget-graph-container{
-    width:70vw;
-    height: 80vh;
+    width:60vw;
+    height: 50vh;
     box-shadow: 2px 2px 20px 3px rgba(0,0,0,0.2);
     border-radius: 15px;
     padding: 20px;
     display: flex;
     flex-direction: column;
     gap: 10px;
+    margin: 20px;
     
 }
 
